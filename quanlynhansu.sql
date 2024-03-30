@@ -1,0 +1,45 @@
+use quanlynhansu;
+CREATE TABLE PHONGBAN (
+  MaPB varchar(20) NOT NULL,
+  TenPB varchar(100) DEFAULT NULL,
+  MoTa varchar(100) DEFAULT NULL,
+  DiaChi varchar(200) DEFAULT NULL,
+  SoDienThoai int DEFAULT NULL,
+  PRIMARY KEY(MaPB)
+);
+
+CREATE TABLE BANGLUONG(
+MABANGLUONG varchar(20) NOT NULL,
+LUONGCOBAN float DEFAULT NULL,
+PHUCAP float DEFAULT NULL,
+PRIMARY KEY(MABANGLUONG)
+ );
+ 
+ CREATE TABLE NHANVIEN(
+  MaNv int NOT NULL,
+  HoTen varchar(100) DEFAULT NULL,
+  NgaySinh date DEFAULT NULL,
+  QueQuan varchar(100) DEFAULT NULL,
+  GioiTinh varchar(10) DEFAULT NULL,
+  SoDienThoai int DEFAULT NULL,
+  DanToc varchar(20) DEFAULT NULL,
+  TonGiao varchar(20) DEFAULT NULL,
+  ChucVu varchar(20) DEFAULT NULL,
+  NgayVao date DEFAULT NULL,
+  MaPB varchar(20) DEFAULT NULL,
+  MaBangLuong varchar(20) DEFAULT NULL,
+  PRIMARY KEY (MaNv),
+  KEY MaPB (MaPB),
+  KEY MaBangLuong (MaBangLuong),
+  CONSTRAINT NHANVIEN_ibfk_1 FOREIGN KEY (MaPB) REFERENCES PHONGBAN (MaPB),
+  CONSTRAINT NHANVIEN_ibfk_2 FOREIGN KEY (MaBangLuong) REFERENCES BANGLUONG (MaBangLuong)
+  );
+  
+  CREATE TABLE HOPDONGLAODONG(
+  MaHD varchar(20) NOT NULL,
+  LoaiHD varchar(100) DEFAULT NULL,
+  TuNgay date DEFAULT NULL,
+  DenNgay date DEFAULT NULL,
+  MaNV int DEFAULT NULL,
+  PRIMARY KEY (MaHD)
+);
